@@ -1,15 +1,17 @@
 package ru.otus.avidzba.dao;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import ru.otus.avidzba.model.Question;
 import ru.otus.avidzba.util.StudentTestResources;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class QuestionDaoImpl implements QuestionDao {
-    private final String fileName;
+    private String fileName;
 
     @Override
     public List<Question> findAll() {

@@ -1,6 +1,6 @@
 id, question
-1, Что такое IoC?
-2, Что такое DI?
-3, Объясните основные принципы ООП
-4, Зачем нужны интерфейсы?
-5, Для чего используют Spring?
+1, What is IoC?
+2, What is DI?
+3, Tell main Principles of OOP
+4, What benifits of using Interfaces in java?
+5, What benifits of using Spring?
