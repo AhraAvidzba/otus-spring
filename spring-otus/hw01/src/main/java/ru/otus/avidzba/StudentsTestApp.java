@@ -6,7 +6,8 @@ import ru.otus.avidzba.service.QuestionService;
 
 public class StudentsTestApp {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/spring-context.xml");
+        ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("/spring-context.xml");
         QuestionService questionService = context.getBean(QuestionService.class);
         questionService.printAll();
         context.close();
