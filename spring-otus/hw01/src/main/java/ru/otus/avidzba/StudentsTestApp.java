@@ -10,6 +10,5 @@ public class StudentsTestApp {
         QuestionService questionService = context.getBean(QuestionService.class);
         questionService.printAll();
         context.close();
-
     }
 }

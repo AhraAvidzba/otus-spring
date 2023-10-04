@@ -19,22 +19,6 @@ import java.util.List;
 public class CsvQuestionDao implements QuestionDao {
     private String fileName;
 
-    @Override
-    public List<Question> findAll() {
-        List<String> lines = getFileFromResourceAsList(fileName);
-        List<Question> questions = new ArrayList<>();
-        for (String line : lines) {
-            String[] data = line.split(",");
-            if (data[0].equals("id")) {
-                continue;
-            }
-            List<String> answers =  Arrays.stream(data[2].split(":")).toList();
-            Question question = new Question(Integer.parseInt(data[0]), data[1], answers);
-            questions.add(question);
-        }
-        return questions;
-    }
-
     private static List<String> getFileFromResourceAsList(String fileName) {
         List<String> lines = new ArrayList<>();
         ClassLoader classLoader = CsvQuestionDao.class.getClassLoader();
@@ -43,7 +27,7 @@ public class CsvQuestionDao implements QuestionDao {
             throw new ResourceNotFoundException("file not found! " + fileName);
         } else {
             try (inputStream; InputStreamReader streamReader =
-                         new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+                    new InputStreamReader(inputStream, StandardCharsets.UTF_8);
                  BufferedReader reader = new BufferedReader(streamReader)) {
                 String line;
                 while ((line = reader.readLine()) != null) {
@@ -54,5 +38,21 @@ public class CsvQuestionDao implements QuestionDao {
             }
         }
         return lines;
+    }
+
+    @Override
+    public List<Question> findAll() {
+        List<String> lines = getFileFromResourceAsList(fileName);
+        List<Question> questions = new ArrayList<>();
+        for (String line : lines) {
+            String[] data = line.split(",");
+            if (data[0].equals("id")) {
+                continue;
+            }
+            List<String> answers = Arrays.stream(data[2].split(":")).toList();
+            Question question = new Question(Integer.parseInt(data[0]), data[1], answers);
+            questions.add(question);
+        }
+        return questions;
     }
 }
