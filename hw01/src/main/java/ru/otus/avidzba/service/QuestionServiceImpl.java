@@ -14,4 +14,9 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> findAll() {
         return questionDao.findAll();
     }
+
+    @Override
+    public void printAll() {
+        findAll().forEach(x -> System.out.println(x.getQuestion()));
+    }
 }

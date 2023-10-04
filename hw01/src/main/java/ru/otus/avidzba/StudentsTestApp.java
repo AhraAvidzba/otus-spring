@@ -8,9 +8,8 @@ public class StudentsTestApp {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/spring-context.xml");
         QuestionService questionService = context.getBean(QuestionService.class);
+        questionService.printAll();
         context.close();
-
-        questionService.findAll().forEach(x -> System.out.println(x.getQuestion()));
 
     }
 }

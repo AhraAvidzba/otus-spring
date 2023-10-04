@@ -2,15 +2,17 @@ package ru.otus.avidzba.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @AllArgsConstructor
 public class Question {
     private Integer id;
 
-    private final String question;
+    private String question;
+
+    private List<String> answers;
 }
